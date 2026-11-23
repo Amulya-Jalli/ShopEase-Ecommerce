@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>404 | Page Not Found - ShopEase</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', path='/style.css') }}">
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <header class="navbar">
+
+        <div class="logo">
+            ShopEase<span>.</span>
+        </div>
+
+        <nav>
+            <a href="/">Home</a>
+            <a href="/products">Products</a>
+        </nav>
+
+        <div class="cart">
+            🛒 My Cart
+        </div>
+
+    </header>
+
+
+    <!-- 404 Error Section -->
+    <main class="error-container">
+
+        <div class="error-content">
+
+            <div class="error-icon">
+                🛍️
+            </div>
+
+            <h1>404</h1>
+
+            <h2>Oops! Page Not Found</h2>
+
+            <p>
+                Sorry, the page or product you are looking for
+                doesn't exist or may have been removed.
+            </p>
+
+            <div class="error-buttons">
+
+                <a href="/" class="home-btn">
+                    Go to Home
+                </a>
+
+                <a href="/products" class="shop-btn">
+                    Explore Products
+                </a>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <h2>
+            ShopEase<span>.</span>
+        </h2>
+
+        <p>
+            Your one-stop destination for quality products.
+        </p>
+
+        <p>
+            © 2026 ShopEase. All rights reserved.
+        </p>
+
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,222 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ShopEase | Online Shopping</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', path='style.css') }}">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+
+        <a href="/" class="logo">ShopEase.</a>
+
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/products">Products</a>
+            <a href="/cart" class="cart">🛒 My Cart</a>
+        </div>
+
+    </nav>
+
+
+    <!-- HERO SECTION -->
+    <section class="home-hero">
+
+        <div class="hero-content">
+
+            <span class="hero-tag">WELCOME TO SHOPEASE</span>
+
+            <h1>
+                Discover Products
+                <span>You'll Love.</span>
+            </h1>
+
+            <p>
+                Explore our collection of quality products at great prices.
+                Find your favorites and enjoy a simple shopping experience.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="#featured-products" class="hero-btn">
+                    Shop Now →
+                </a>
+
+                <a href="/products" class="hero-outline-btn">
+                    Explore Products
+                </a>
+            </div>
+
+            <div class="hero-features">
+                <div>
+                    <strong>20+</strong>
+                    <span>Products</span>
+                </div>
+
+                <div>
+                    <strong>Easy</strong>
+                    <span>Shopping</span>
+                </div>
+
+                <div>
+                    <strong>Secure</strong>
+                    <span>Checkout</span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="hero-visual">
+
+            <div class="hero-circle">
+                <div class="hero-shopping-icon">🛍️</div>
+            </div>
+
+            <div class="floating-card">
+                <span>✨</span>
+                <div>
+                    <strong>Find Your Style</strong>
+                    <small>Something for everyone</small>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CATEGORY SECTION -->
+    <section class="home-categories">
+
+        <div class="section-heading">
+            <span>EXPLORE</span>
+            <h2>Shop by Category</h2>
+            <p>Find exactly what you are looking for.</p>
+        </div>
+
+        <div class="home-category-grid">
+
+            <a href="/products?category=electronics" class="home-category-card">
+                <div class="category-icon">💻</div>
+                <h3>Electronics</h3>
+                <p>Explore gadgets and devices</p>
+            </a>
+
+            <a href="/products?category=jewelery" class="home-category-card">
+                <div class="category-icon">💎</div>
+                <h3>Jewelry</h3>
+                <p>Discover elegant accessories</p>
+            </a>
+
+            <a href="/products?category=men's clothing" class="home-category-card">
+                <div class="category-icon">👕</div>
+                <h3>Men's Fashion</h3>
+                <p>Upgrade your everyday style</p>
+            </a>
+
+            <a href="/products?category=women's clothing" class="home-category-card">
+                <div class="category-icon">👗</div>
+                <h3>Women's Fashion</h3>
+                <p>Find your perfect look</p>
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- FEATURED PRODUCTS -->
+    <section class="featured-section" id="featured-products">
+
+        <div class="section-heading">
+            <span>OUR COLLECTION</span>
+            <h2>Featured Products</h2>
+            <p>Discover some of our popular products.</p>
+        </div>
+
+        <div class="product-grid">
+
+            {% for product in products[:4] %}
+
+            <div class="product-card">
+
+                <a href="/product/{{ product.id }}">
+                    <img
+                        src="{{ product.image }}"
+                        alt="{{ product.title }}"
+                        class="product-image"
+                    >
+                </a>
+
+                <div class="product-info">
+
+                    <p class="product-category">
+                        {{ product.category }}
+                    </p>
+
+                    <h3 class="product-title">
+                        {{ product.title }}
+                    </h3>
+
+                    <p class="product-price">
+                        ₹{{ "%.2f"|format(product.price|float) }}
+                    </p>
+
+                    <a href="/product/{{ product.id }}" class="view-product-btn">
+                        View Product →
+                    </a>
+
+                </div>
+
+            </div>
+
+            {% else %}
+
+            <p class="empty-message">
+                No products available right now.
+            </p>
+
+            {% endfor %}
+
+        </div>
+
+        <div class="featured-footer">
+            <a href="/products" class="all-products-btn">
+                View All Products →
+            </a>
+        </div>
+
+    </section>
+
+
+    <!-- BOTTOM BANNER -->
+    <section class="home-banner">
+
+        <div>
+            <span>YOUR SHOPPING JOURNEY STARTS HERE</span>
+            <h2>Good Finds. Great Prices.</h2>
+            <p>Explore our products and find something special today.</p>
+        </div>
+
+        <a href="/products" class="banner-btn">
+            Start Shopping →
+        </a>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <h3>ShopEase.</h3>
+        <p>Your everyday shopping destination.</p>
+        <p>© 2026 ShopEase. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

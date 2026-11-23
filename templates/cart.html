@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Cart | ShopEase</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <h2>ShopEase</h2>
+        <div>
+            <a href="/">Home</a>
+            <a href="/products">Products</a>
+            <a href="/cart">My Cart</a>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <h1>My Shopping Cart</h1>
+
+        {% if cart_items %}
+
+            {% for item in cart_items %}
+
+                <div class="cart-item">
+
+                    <img src="{{ item.image }}" alt="{{ item.title }}">
+
+                    <div class="cart-info">
+
+                        <h3>{{ item.title }}</h3>
+
+                        <p>Price: ${{ "%.2f"|format(item.price) }}</p>
+
+                        <div class="quantity-controls">
+
+                            <a href="/decrease-quantity/{{ item.id }}"
+                               class="quantity-btn">−</a>
+
+                            <span class="quantity-number">
+                                {{ item.quantity }}
+                            </span>
+
+                            <a href="/increase-quantity/{{ item.id }}"
+                               class="quantity-btn">+</a>
+
+                        </div>
+
+                        <p>
+                            Subtotal:
+                            ${{ "%.2f"|format(item.subtotal) }}
+                        </p>
+
+                        <a href="/remove-from-cart/{{ item.id }}"
+                           class="remove-btn">
+                            Remove
+                        </a>
+
+                    </div>
+
+                </div>
+
+            {% endfor %}
+
+            <div class="cart-total">
+
+                <h2>
+                    Total: ${{ "%.2f"|format(total_price) }}
+                </h2>
+
+                <a href="/products" class="buy-btn">
+                    Continue Shopping
+                </a>
+
+                <a href="/checkout" class="buy-btn">
+                    Proceed to Checkout
+                </a>
+
+            </div>
+
+        {% else %}
+
+            <div class="no-products">
+                <h2>Your cart is empty!</h2>
+                <p>Add some products to your cart.</p>
+
+                <a href="/products" class="buy-btn">
+                    Explore Products
+                </a>
+            </div>
+
+        {% endif %}
+
+    </div>
+
+    <footer>
+        <p>© 2026 ShopEase. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
